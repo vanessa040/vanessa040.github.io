@@ -68,9 +68,9 @@ export default function Home() {
             </h1>
             
             <div className="text-base text-white/60 font-sans leading-relaxed space-y-1 max-w-3xl">
-              <p className="whitespace-nowrap overflow-hidden text-ellipsis">蚂蚁在职体验设计师，负责 AI 理财机器人「蚂小财」的交互与视觉设计。</p>
-              <p className="whitespace-nowrap overflow-hidden text-ellipsis">对 AI 充满探索欲和好奇心，持续研究 AI Native 体验、意图交互与内容生成范式。</p>
-              <p className="whitespace-nowrap overflow-hidden text-ellipsis">用克制的设计让复杂的智能更可理解、更可信。</p>
+              <p className="whitespace-normal break-words">蚂蚁在职体验设计师，负责 AI 理财机器人「蚂小财」的交互与视觉设计。</p>
+              <p className="whitespace-normal break-words">对 AI 充满探索欲和好奇心，持续研究 AI Native 体验、意图交互与内容生成范式。</p>
+              <p className="whitespace-normal break-words">用克制的设计让复杂的智能更可理解、更可信。</p>
             </div>
 
             <div className="pt-6">
