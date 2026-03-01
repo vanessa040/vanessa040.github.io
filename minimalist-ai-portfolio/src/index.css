@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #05060A;
+    --text-primary: #F5F5F7;
+    --text-secondary: #86868B;
+    --card-bg: rgba(28, 28, 30, 0.6);
+    --border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  html {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: var(--bg-dark);
+  }
+  
+  body {
+    @apply bg-[#05060A] text-[#F5F5F7];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08];
+  }
+
+  .glass-panel-apple {
+    @apply bg-white/[0.02] backdrop-blur-2xl border border-white/[0.06] shadow-2xl shadow-black/20;
+  }
+  
+  .text-gradient-subtle {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-white/70;
+  }
+
+  .aura-gradient {
+    background: radial-gradient(circle at center, rgba(56, 189, 248, 0.08) 0%, rgba(168, 85, 247, 0.04) 40%, transparent 70%);
+  }
+
+  @keyframes aurora-shift {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.15; }
+    33% { transform: translate(30px, -50px) scale(1.1); opacity: 0.2; }
+    66% { transform: translate(-20px, 20px) scale(0.9); opacity: 0.15; }
+    100% { transform: translate(0, 0) scale(1); opacity: 0.15; }
+  }
+
+  .apple-intelligence-aura {
+    background: 
+      radial-gradient(circle at 50% 50%, rgba(64, 201, 255, 0.4), transparent 50%),
+      radial-gradient(circle at 0% 0%, rgba(232, 28, 255, 0.3), transparent 50%),
+      radial-gradient(circle at 100% 0%, rgba(0, 255, 255, 0.3), transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(255, 0, 221, 0.3), transparent 50%),
+      radial-gradient(circle at 0% 100%, rgba(64, 201, 255, 0.3), transparent 50%);
+    filter: blur(80px);
+    opacity: 0.15;
+    animation: aurora-shift 15s ease-in-out infinite alternate;
+    mix-blend-mode: screen;
+  }
+
+  .text-gradient-apple {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300;
+  }
+}
