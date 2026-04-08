@@ -1,5 +1,13 @@
 import Layout from '../components/Layout';
 import { Mail, Phone } from 'lucide-react';
+import ImageWithFallback from '../components/ImageWithFallback';
+
+const aboutImages = {
+  profile: '/images/about/profile.jpg',
+  qr: '/images/about/wechat-qr.jpg',
+  ant: '/images/about/ant-group.png',
+  meituan: '/images/about/meituan.png',
+};
 
 export default function About() {
   return (
@@ -26,14 +34,15 @@ export default function About() {
               </div>
             </div>
             <div className="w-32 h-32 md:w-48 md:h-48 flex-shrink-0 rounded-full overflow-hidden border-2 border-white/10 shadow-lg grayscale hover:grayscale-0 transition-all duration-500">
-              <img 
-                src="https://i.postimg.cc/GhzL72N5/01.jpg" 
-                alt="Profile" 
+              <ImageWithFallback
+                src={aboutImages.profile}
+                alt="Profile"
                 className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-white/5 text-white/20 text-xs text-center">Profile</div>';
-                }}
+                fallback={
+                  <div className="w-full h-full flex items-center justify-center bg-white/5 text-white/20 text-xs text-center">
+                    Profile
+                  </div>
+                }
               />
             </div>
           </div>
@@ -96,11 +105,11 @@ export default function About() {
               <div className="group glass-panel-apple p-8 rounded-2xl hover:bg-white/[0.04] transition-all duration-500 border-l-4 border-l-blue-500/50">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
                   <h3 className="text-xl font-semibold text-white/90 group-hover:text-white transition-colors flex items-center">
-                    <img 
-                      src="https://i.postimg.cc/J4R75JT9/03.png" 
-                      alt="Ant Group" 
+                    <ImageWithFallback
+                      src={aboutImages.ant}
+                      alt="Ant Group"
                       className="w-6 h-6 rounded-md mr-3 object-cover bg-white/10"
-                      onError={(e) => e.currentTarget.style.display = 'none'} 
+                      fallback={<span className="w-6 h-6 rounded-md mr-3 bg-white/10" />}
                     />
                     蚂蚁 体验设计师
                   </h3>
@@ -132,11 +141,11 @@ export default function About() {
               <div className="group glass-panel-apple p-8 rounded-2xl hover:bg-white/[0.04] transition-all duration-500 border-l-4 border-l-yellow-500/50">
                 <div className="flex flex-col md:flex-row md:justify-between md:items-baseline mb-2">
                   <h3 className="text-xl font-semibold text-white/90 group-hover:text-white transition-colors flex items-center">
-                    <img 
-                      src="https://i.postimg.cc/WbspwrWL/04.png" 
-                      alt="Meituan" 
+                    <ImageWithFallback
+                      src={aboutImages.meituan}
+                      alt="Meituan"
                       className="w-6 h-6 rounded-md mr-3 object-cover bg-white/10"
-                      onError={(e) => e.currentTarget.style.display = 'none'} 
+                      fallback={<span className="w-6 h-6 rounded-md mr-3 bg-white/10" />}
                     />
                     美团 交互设计师
                   </h3>
@@ -192,15 +201,15 @@ export default function About() {
             
             <div className="flex flex-col items-center gap-4 p-6 bg-white/[0.02] border border-white/[0.05] rounded-2xl backdrop-blur-sm">
               <div className="w-32 h-32 bg-white rounded-lg p-2 shadow-lg">
-                <img 
-                  src="https://i.postimg.cc/vHXYqBjP/02.jpg" 
-                  alt="WeChat QR Code" 
+                <ImageWithFallback
+                  src={aboutImages.qr}
+                  alt="WeChat QR Code"
                   className="w-full h-full object-contain"
-                  onError={(e) => {
-                    // Fallback if image not found
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement!.innerHTML = '<div class="w-full h-full flex items-center justify-center text-black/20 text-xs text-center">QR Code</div>';
-                  }}
+                  fallback={
+                    <div className="w-full h-full flex items-center justify-center text-black/20 text-xs text-center">
+                      QR Code
+                    </div>
+                  }
                 />
               </div>
               <span className="text-xs text-white/40 uppercase tracking-wider">Scan to Connect</span>

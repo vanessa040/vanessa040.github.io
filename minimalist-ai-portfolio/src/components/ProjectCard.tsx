@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Project } from '../data/projects';
 import { ArrowRight } from 'lucide-react';
+import ImageWithFallback from './ImageWithFallback';
 
 interface ProjectCardProps {
   project: Project;
@@ -22,12 +23,16 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
         <div className="aspect-[4/3] overflow-hidden bg-[#1A1B1F] relative">
-          <motion.img
+          <ImageWithFallback
             src={project.cover}
             alt={project.title}
             className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-all duration-700"
-            whileHover={{ scale: 1.05 }}
             referrerPolicy="no-referrer"
+            fallback={
+              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-white/[0.06] to-white/[0.02] text-white/35 text-sm uppercase tracking-[0.2em]">
+                Cover
+              </div>
+            }
           />
           <div className="absolute top-4 left-4 flex flex-wrap gap-2">
             {(project.tags || [project.category]).map((tag, index) => (

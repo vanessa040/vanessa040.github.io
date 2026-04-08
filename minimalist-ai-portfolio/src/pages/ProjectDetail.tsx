@@ -3,6 +3,7 @@ import { projects } from '../data/projects';
 import Layout from '../components/Layout';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import ImageWithFallback from '../components/ImageWithFallback';
 
 export default function ProjectDetail() {
   const { slug } = useParams();
@@ -95,12 +96,17 @@ export default function ProjectDetail() {
           {project.gallery.map((item, idx) => (
             <div key={idx} className={`${item.fullWidth ? 'w-full' : 'max-w-5xl mx-auto'}`}>
               <div>
-                <img 
-                  src={item.src} 
-                  alt={item.caption || `Gallery image ${idx + 1}`} 
+                <ImageWithFallback
+                  src={item.src}
+                  alt={item.caption || `Gallery image ${idx + 1}`}
                   className={`w-full h-auto ${['ant-fortune-services', 'financial-material-review-system', 'meituan-digital-currency-v4'].includes(project.slug) ? 'border border-white/10 rounded-lg' : ''}`}
                   loading="lazy"
                   referrerPolicy="no-referrer"
+                  fallback={
+                    <div className="w-full min-h-72 flex items-center justify-center border border-dashed border-white/10 rounded-lg bg-white/[0.02] text-white/25 text-sm tracking-[0.18em] uppercase">
+                      Missing image {String(idx + 1).padStart(2, '0')}
+                    </div>
+                  }
                 />
               </div>
               {item.caption && (

@@ -8,7 +8,6 @@ import { useLayoutEffect } from 'react';
 import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
 import About from './pages/About';
-import Contact from './pages/Contact';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
